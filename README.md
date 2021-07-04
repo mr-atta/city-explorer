@@ -1,70 +1,62 @@
-# Getting Started with Create React App
+# Project Name: [City Explorer](https://practical-kepler-4865c5.netlify.app/)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**Author**: Mohammad Atta
+**Version**: 1.0.0 (increment the patch/fix version number if you make more commits past your first submission)
 
-## Available Scripts
+## Overview
 
-In the project directory, you can run:
+<!-- Provide a high level overview of what this application is and why you are building it, beyond the fact that it's an assignment for this class. (i.e. What's your problem domain?) -->
 
-### `npm start`
+## Getting Started
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+<!-- What are the steps that a user must take in order to build this app on their own machine and get it running? -->
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Architecture
 
-### `npm test`
+<!-- Provide a detailed description of the application design. What technologies (languages, libraries, etc) you're using, and any other relevant design information. -->
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Change Log
 
-### `npm run build`
+<!-- Use this area to document the iterative changes made to your application as each feature is successfully implemented. Use time stamps. Here's an example:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+01-01-2001 4:59pm - Application now has a fully-functional express server, with a GET route for the location resource. -->
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Credit and Collaborations
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<!-- Give credit (and a link) to other people or resources that helped you build this application. -->
 
-### `npm run eject`
+## **\*\*\*\***\*\***\*\*\*\***\***\*\*\*\***\*\***\*\*\*\***
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+<!--
+Name of feature: 1. Set up your React repository & API keys.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Estimate of time needed to complete: **30 min\_**
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Start time: **2:30\_**
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Finish time: **3:20\_**
 
-## Learn More
+Actual time needed to complete: **50 min\_**
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+///////////////////////////////////////////
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Name of feature: 2. Locations: As a user of City Explorer, I want to enter the name of a location so that I can see the exact latitude and longitude of that location.
 
-### Code Splitting
+Estimate of time needed to complete: **60 min\_**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Start time: **3:20\_**
 
-### Analyzing the Bundle Size
+Finish time: **5:20\_**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Actual time needed to complete: **120 min\_** -->
+<!-- ///////////////////////////////////////////
 
-### Making a Progressive Web App
+Name of feature: 3. Map: As a user, I want to see a map of the city so that I can see the layout of the area I want to explore.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Estimate of time needed to complete: **30 min\_**
 
-### Advanced Configuration
+Start time: **5:30\_**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Finish time: **6:20\_**
 
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Actual time needed to complete: **50 min\_**  -->
