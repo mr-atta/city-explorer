@@ -3,6 +3,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Card from "react-bootstrap/Card";
 import axios from "axios";
 
+import Weather from "./components/Weather";
+
 // ////////////////////////////////////
 
 class App extends React.Component {
@@ -12,6 +14,8 @@ class App extends React.Component {
       dataForCity: {},
       nameFromInput: "",
       showCard: false,
+      // lab 7
+      weatherData: [],
     };
   }
 
@@ -40,6 +44,21 @@ class App extends React.Component {
     // lat
     // lon
     // type
+
+    // lab 7 ///////////////////////////////////////////////////////////////
+
+    // localhost:3010/getweatherInfo?lat=<>&&lon=<>&&searchQuery=<>
+    //
+    let url2 = `https://city-explorer-backend-lab7.herokuapp.com/getweatherInfo?searchQuery=${this.state.nameFromInput}`;
+
+    let weatherCity = await axios.get(url2);
+    console.log(weatherCity);
+    await this.setState({
+      weatherData: weatherCity.data,
+    });
+    console.log(this.state.weatherData);
+
+    // ///////////////////////////////////////////////////////////////////////////
   };
 
   render() {
@@ -77,6 +96,9 @@ class App extends React.Component {
             )}
           </Card.Body>
         </Card>
+        {this.state.showCard && (
+          <Weather weatherData={this.state.weatherData}></Weather>
+        )}
       </>
     );
   }
