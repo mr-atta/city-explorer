@@ -4,6 +4,7 @@ import Card from "react-bootstrap/Card";
 import axios from "axios";
 
 import Weather from "./components/Weather";
+import Moves from "./components/Moves";
 
 // ////////////////////////////////////
 
@@ -14,8 +15,10 @@ class App extends React.Component {
       dataForCity: {},
       nameFromInput: "",
       showCard: false,
-      // lab 7
+      // lab 7 / 8
       weatherData: [],
+      // move lab 8
+      movesData: [],
     };
   }
 
@@ -32,33 +35,56 @@ class App extends React.Component {
     // axios.get : get the data from the url link and a copy of them in the resData
     let resData = await axios.get(url);
 
-    console.log(resData.data[0]);
+    // console.log(resData.data[0]);
 
     this.setState({
       dataForCity: resData.data[0],
       // //////// to show the img (the map) after submit (buttun)
       showCard: true,
     });
-    // ////////////////////////////////////////////////
-    // display_name
-    // lat
-    // lon
-    // type
 
     // lab 7 ///////////////////////////////////////////////////////////////
 
     // localhost:3010/getweatherInfo?searchQuery=Amman
     //http://city-explorer-backend-lab7.herokuapp.com/getweatherInfo?searchQuery=${this.state.nameFromInput}
-    let url2 = `http://city-explorer-backend-lab7.herokuapp.com/getweatherInfo?searchQuery=${this.state.nameFromInput}&&let=${this.state.dataForCity.lat}&&lon=${this.state.dataForCity.lon}`;
 
-    let weatherCity = await axios.get(url2);
-    console.log(weatherCity);
-    await this.setState({
-      weatherData: weatherCity.data,
-    });
-    console.log(this.state.weatherData);
+    // let url2 = `http://city-explorer-backend-lab7.herokuapp.com/getweatherInfo?searchQuery=${this.state.nameFromInput}&&let=${this.state.dataForCity.lat}&&lon=${this.state.dataForCity.lon}`;
 
-    // ///////////////////////////////////////////////////////////////////////////
+    // let weatherCity = await axios.get(url2);
+    // console.log(weatherCity);
+    // await this.setState({
+    //   weatherData: weatherCity.data,
+    // });
+    // console.log(this.state.weatherData);
+
+    // lab 8 ///////////////////////////////////////////////////////////////////////////
+    //localhost:3010/getweatherInfo?searchQuery=<amman>&&let=<>&&lon=<>
+    // http://
+    try {
+      let resWData = await axios.get(
+        `http://localhost:3010/getweatherInfo?searchQuery=${this.state.nameFromInput}`
+      );
+      await this.setState({
+        weatherData: resWData.data,
+      });
+      // console.log(this.state.weatherData);
+    } catch (error) {
+      console.log("error in sending axios request ,weather");
+    }
+    //////////
+    // moves
+    // http://localhost:3010/getHandelMoveInfo?searchQuery=Amman
+    try {
+      let reMData = await axios.get(
+        `http://localhost:3010/getHandelMoveInfo?searchQuery=${this.state.nameFromInput}`
+      );
+      await this.setState({
+        movesData: reMData.data,
+      });
+      // console.log(this.state.movesData);
+    } catch (error) {
+      console.log("error in sending axios request ,moves");
+    }
   };
 
   render() {
@@ -99,6 +125,8 @@ class App extends React.Component {
         {this.state.showCard && (
           <Weather weatherData={this.state.weatherData}></Weather>
         )}
+
+        <Moves movesData={this.state.movesData}></Moves>
       </>
     );
   }

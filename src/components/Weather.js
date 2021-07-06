@@ -12,18 +12,18 @@ class Weather extends React.Component {
   }
 
   render() {
-    console.log(this.props.weatherData);
     return (
       <>
         <Card style={{ width: "30rem" }}>
           <Card.Body>
             {/* <Card.Title>{this.props.weatherData.city_name}</Card.Title> */}
-            {this.props.weatherData.map((ele) => {
+            {this.props.weatherData.map((ele, i) => {
               return (
-                <>
-                  <Card.Text>{ele.date}</Card.Text>
-                  <Card.Text>{ele.description}</Card.Text>
-                </>
+                <div key={i}>
+                  <Card.Text>Day : {ele.date}</Card.Text>
+                  <Card.Text>Description : {ele.description}</Card.Text>
+                  <Card.Text>Wind speed : {ele.wind_spd}</Card.Text>
+                </div>
               );
             })}
           </Card.Body>
