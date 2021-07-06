@@ -17,8 +17,15 @@ class Weather extends React.Component {
       <>
         <Card style={{ width: "30rem" }}>
           <Card.Body>
-            <Card.Title>{this.props.weatherData.city_name}</Card.Title>
-            <Card.Text>{this.props.weatherData.lon}</Card.Text>
+            {/* <Card.Title>{this.props.weatherData.city_name}</Card.Title> */}
+            {this.props.weatherData.map((ele) => {
+              return (
+                <>
+                  <Card.Text>{ele.date}</Card.Text>
+                  <Card.Text>{ele.description}</Card.Text>
+                </>
+              );
+            })}
           </Card.Body>
         </Card>
       </>
