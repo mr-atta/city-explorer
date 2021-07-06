@@ -49,7 +49,7 @@ class App extends React.Component {
 
     // localhost:3010/getweatherInfo?searchQuery=Amman
     //http://city-explorer-backend-lab7.herokuapp.com/getweatherInfo?searchQuery=${this.state.nameFromInput}
-    let url2 = `http://localhost:3010/getweatherInfo?searchQuery=${this.state.nameFromInput}&&let=${this.state.dataForCity.lat}&&lon=${this.state.dataForCity.lon}`;
+    let url2 = `http://city-explorer-backend-lab7.herokuapp.com/getweatherInfo?searchQuery=${this.state.nameFromInput}&&let=${this.state.dataForCity.lat}&&lon=${this.state.dataForCity.lon}`;
 
     let weatherCity = await axios.get(url2);
     console.log(weatherCity);
