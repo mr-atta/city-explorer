@@ -9,12 +9,26 @@ class Moves extends React.Component {
     return (
       <>
         {this.props.movesData.map((ele, i) => {
+          console.log(ele);
           return (
-            <div key={i}>
-              {/* <h3>move title : {ele.title}</h3> */}
-              <Card body>move title : {ele.title}.</Card>
-              <Card body>move vote : {ele.vote_average}.</Card>
-            </div>
+            <Card style={{ width: "20rem" }}>
+              <Card.Img variant="top" src={ele.poster_path} alt={ele.title} />
+              {/* <img src={ele.poster_path} alt={ele.title} /> */}
+              <Card.Body>
+                <Card.Title>{ele.title}</Card.Title>
+                <Card.Text>
+                  {" "}
+                  {ele.overview}, Vote:{ele.vote_average}{" "}
+                </Card.Text>
+              </Card.Body>
+            </Card>
+            // <div key={i}>
+            //   {/* <h3>move title : {ele.title}</h3> */}
+            //   <Card body>move title : {ele.title}.</Card>
+            //   <Card body>move vote : {ele.vote_average}.</Card>
+            //   <Card body>move overview : {ele.overview}</Card>
+            //   <img src={ele.poster_path} alt={ele.title} />
+            // </div>
           );
         })}
       </>
