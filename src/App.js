@@ -62,7 +62,7 @@ class App extends React.Component {
     // http://
     try {
       let resWData = await axios.get(
-        `http://${process.env.REACT_APP_HEROKU_LINK}/getweatherInfo?searchQuery=${this.state.nameFromInput}`
+        `https://${process.env.REACT_APP_HEROKU_LINK}/getweatherInfo?searchQuery=${this.state.nameFromInput}`
       );
       await this.setState({
         weatherData: resWData.data,
@@ -76,7 +76,7 @@ class App extends React.Component {
     // http://localhost:3010/getHandelMoveInfo?searchQuery=Amman
     try {
       let reMData = await axios.get(
-        `http://${process.env.REACT_APP_HEROKU_LINK}/getHandelMoveInfo?searchQuery=${this.state.nameFromInput}`
+        `https://${process.env.REACT_APP_HEROKU_LINK}/getHandelMoveInfo?searchQuery=${this.state.nameFromInput}`
       );
       await this.setState({
         movesData: reMData.data,
