@@ -2,9 +2,11 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Card from "react-bootstrap/Card";
 import axios from "axios";
+import { Container, Row, Col } from "react-bootstrap";
 
 import Weather from "./components/Weather";
 import Moves from "./components/Moves";
+import Yelp from "./components/Yelp";
 
 // ////////////////////////////////////
 
@@ -19,6 +21,8 @@ class App extends React.Component {
       weatherData: [],
       // move lab 8
       movesData: [],
+      // lab 10
+      yelpData: [],
     };
   }
 
@@ -59,10 +63,12 @@ class App extends React.Component {
 
     // lab 8 ///////////////////////////////////////////////////////////////////////////
     //localhost:3010/getweatherInfo?searchQuery=<amman>&&let=<>&&lon=<>
-    // http://
+    // http://  localy
+    // https://  after push the data
+    //${process.env.REACT_APP_HEROKU_LINK}
     try {
       let resWData = await axios.get(
-        `${process.env.REACT_APP_HEROKU_LINK}/getweatherInfo?searchQuery=${this.state.nameFromInput}`
+        `${process.env.REACT_APP_HEROKU_LINK}/getweatherInfo?searchQuery=${this.state.nameFromInput}&&Day=1`
       );
       await this.setState({
         weatherData: resWData.data,
@@ -85,48 +91,87 @@ class App extends React.Component {
     } catch (error) {
       console.log("error in sending axios request ,moves");
     }
+
+    //  yelp
+    //localhost:3010/getHandelYelpInfo?location=<amman>
+    // ${process.env.REACT_APP_HEROKU_LINK}
+    try {
+      let reYData = await axios.get(
+        `${process.env.REACT_APP_HEROKU_LINK}/getHandelYelpInfo?location=${this.state.nameFromInput}`
+      );
+      // console.log(reYData.data);
+      await this.setState({
+        yelpData: reYData.data,
+      });
+    } catch (error) {
+      console.log("error in sending axios request ,yelp");
+    }
   };
 
   render() {
     return (
       <>
-        <h1>City Explorer</h1>
+        <Container>
+          <Row>
+            <Col>
+              <h1>City Explorer</h1>
+            </Col>
+          </Row>
 
-        <form onSubmit={this.getCityLocation}>
-          <input type="text" name="cityName" placeholder="type city name..." />
+          <Row>
+            <Col>
+              <form onSubmit={this.getCityLocation}>
+                <input
+                  type="text"
+                  name="cityName"
+                  placeholder="type city name..."
+                />
 
-          {/* <button>Explorer!</button> */}
+                <input type="submit" value="Explorer!" />
+              </form>
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <Card style={{ width: "30rem" }}>
+                {this.state.showCard && (
+                  <Card.Img
+                    variant="top"
+                    src={`https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATIONIQ_KEY}&center=${this.state.dataForCity.lat},${this.state.dataForCity.lon}&zoom=13`}
+                    alt="{this.state.dataForCity.display_name}"
+                  />
+                )}
 
-          <input type="submit" value="Explorer!" />
-        </form>
+                <Card.Body>
+                  {this.state.showCard && (
+                    <Card.Title>
+                      {this.state.dataForCity.display_name}
+                    </Card.Title>
+                  )}
+                  {this.state.showCard && (
+                    <Card.Text>
+                      It's a: {this.state.dataForCity.type} &nbsp;&nbsp;&nbsp;
+                      latitude: {this.state.dataForCity.lat}&nbsp; longitude:{" "}
+                      {this.state.dataForCity.lon}
+                    </Card.Text>
+                  )}
+                </Card.Body>
+              </Card>
+            </Col>
+          </Row>
 
-        <Card style={{ width: "30rem" }}>
-          {this.state.showCard && (
-            <Card.Img
-              variant="top"
-              src={`https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATIONIQ_KEY}&center=${this.state.dataForCity.lat},${this.state.dataForCity.lon}&zoom=13`}
-              alt="{this.state.dataForCity.display_name}"
-            />
-          )}
-
-          <Card.Body>
+          <Row>
             {this.state.showCard && (
-              <Card.Title>{this.state.dataForCity.display_name}</Card.Title>
+              <Weather weatherData={this.state.weatherData}></Weather>
             )}
-            {this.state.showCard && (
-              <Card.Text>
-                It's a: {this.state.dataForCity.type} &nbsp;&nbsp;&nbsp;
-                latitude: {this.state.dataForCity.lat}&nbsp; longitude:{" "}
-                {this.state.dataForCity.lon}
-              </Card.Text>
-            )}
-          </Card.Body>
-        </Card>
-        {this.state.showCard && (
-          <Weather weatherData={this.state.weatherData}></Weather>
-        )}
-
-        <Moves movesData={this.state.movesData}></Moves>
+          </Row>
+          <Row>
+            <Moves movesData={this.state.movesData}></Moves>
+          </Row>
+          <Row>
+            <Yelp yelpData={this.state.yelpData}></Yelp>
+          </Row>
+        </Container>
       </>
     );
   }

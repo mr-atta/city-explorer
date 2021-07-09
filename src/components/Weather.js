@@ -18,8 +18,7 @@ class Weather extends React.Component {
     );
   }
 }
-//   <h2>Weather</h2>
-//         <p>{this.props.weatherData.city_name}</p>
+
 // ////////////////////////////////////
 
 export default Weather;
