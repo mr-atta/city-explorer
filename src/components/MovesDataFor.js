@@ -1,7 +1,7 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Card from "react-bootstrap/Card";
-import { Container, Row, Col } from "react-bootstrap";
+import { Col } from "react-bootstrap";
 
 // //////////////////////////////////////////////////
 
