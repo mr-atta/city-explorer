@@ -10,8 +10,6 @@ class WeatherDay extends React.Component {
       <>
         <Card style={{ width: "30rem" }}>
           <Card.Body>
-            {/* <Card.Title>{this.props.weatherData.city_name}</Card.Title> */}
-
             {this.props.weatherData.map((ele, i) => {
               return (
                 <div key={i}>
